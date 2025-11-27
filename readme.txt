@@ -1,4 +1,4 @@
-TactoAR
+TactoAR & Kidney Segmentation integration
 Software per la segmentazione di immagini mediche e la creazione di modelli 3D.
 
 Prerequisiti: Python 3.10
@@ -87,4 +87,5 @@ https://www.blender.org/about/credits/
 
 Python:
 https://www.python.org/doc/copyright/
+
 
