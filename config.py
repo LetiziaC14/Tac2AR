@@ -6,10 +6,10 @@ import sys
 # --- IMPOSTAZIONI GENERALI DEL PROGETTO ---
 
 # ID del cliente corrente. Usato per la strutturazione delle directory e i nomi dei file.
-CLIENT_ID = "Client"
+CLIENT_ID = "Ospedale_A"
 
 # ID della sessione del progetto corrente (es. ID scansione paziente). Usato per la strutturazione delle directory e i nomi dei file.
-PROJECT_SESSION_ID = "CASE_001_SCAN_01"
+PROJECT_SESSION_ID = "Caso_M"
 
 # Se True, le directory Tmp e Output della sessione corrente verranno eliminate all'avvio.
 # Impostare a False per il debug o per riesecuzioni parziali senza dover ricopiare i file di input.
@@ -19,10 +19,10 @@ CLEAN_SESSION_ON_START = True
 
 # Task/s di segmentazione da eseguire (es. ['total'], ['lung_vessels'], ['tissue_types'], etc.)
 # La libreria TotalSegmentator verra' chiamata direttamente per ogni task nella lista.
-TOTAL_SEGMENTATOR_TASKS = ['total_mr']
+TOTAL_SEGMENTATOR_TASKS = ['total']
 
 # Device da usare per la segmentazione ('gpu' o 'cpu').
-TOTAL_SEGMENTATOR_DEVICE = "gpu"
+TOTAL_SEGMENTATOR_DEVICE = "cpu"
 
 # --- IMPOSTAZIONI DEL MODELLO E DEL BAKING ---
 
@@ -37,10 +37,10 @@ MAX_FACES_PER_MESH = 100000
 NORMAL_SMOOTHING_METHOD = 'WEIGHTED'
 
 # Dimensione delle texture generate (larghezza e altezza in pixel).
-TEXTURE_SIZE = 1024
+TEXTURE_SIZE = 256 #(o potenze del 2), by default 1024
 
 # Device da usare per il bake ('gpu' o 'cpu').
-BLENDER_DEVICE="gpu"
+BLENDER_DEVICE="cpu"
 
 # Fattore di scala per convertire le unita' del file STL (tipicamente mm) nelle unita' di Blender (m).
 # Default: 0.001 (per conversione da millimetri a metri).
@@ -50,6 +50,9 @@ WORLD_SCALE_FACTOR = 0.001
 # Base per il nome dell'oggetto root generato da Blender (e.g., "GeneratedModel").
 ROOT_NAME_BASE = PROJECT_SESSION_ID
 ROOT_WORLD_POSITION = (0.0, 0.0, 0.0)
+
+# --- PERCORSO KIDNEY SEGMENTATION PIPELINE (change to your actual path) ---
+KIDNEY_SEGMENTATION_PIPELINE_DIR =  r"C:\Users\letiz\Documents\Huvant\nnUNet_update\run_all.sh"
 
 # --- STRUTTURA DIRECTORY E FILE ---
 
@@ -72,7 +75,7 @@ EXTENSION_URP = "fbx"
 # --- PERCORSI RICAVATI ---
 
 # Directory radice del progetto. Tutte le altre directory saranno relative a questa.
-PROJECT_ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT_DIR = os.path.dirname(os.path.abspath(__file__)) # Directory contenente config.py
 CONFIG_DIR = PROJECT_ROOT_DIR
 INPUT_DIR = os.path.join(PROJECT_ROOT_DIR, INPUT_DIR_NAME, CLIENT_ID, PROJECT_SESSION_ID)
 TMP_DIR = os.path.join(PROJECT_ROOT_DIR, TMP_DIR_NAME)
@@ -98,7 +101,7 @@ URP_FILENAME = f"{PROJECT_SESSION_ID}{OUTPUT_SUFFIX}.{EXTENSION_URP}" # Esempio:
 BLENDER_INSTALL_ROOT = os.path.join(PROJECT_ROOT_DIR, "Blender") # QUESTA DEVE ESSERE LA CARTELLA CHE CONTIENE DIRETTAMENTE "blender.exe"
 BLENDER_EXECUTABLE = os.path.join(BLENDER_INSTALL_ROOT, "blender.exe")
 BLENDER_PYTHON_DIR = "4.5\\python\\bin"
-BLENDER_DEVICE = "GPU" # Device for baking ('CPU', 'CUDA', 'OPTIX')
+BLENDER_DEVICE = "CPU" # Device for baking ('CPU', 'CUDA', 'OPTIX')
 
 # --- PERCORSI TOTAL SEGMENTATOR ---
 
