@@ -58,7 +58,7 @@ PROJECT_SESSION_ID = "Caso_N"
 
 8) Esegui con:
 python Main.py
-Pipeline di segmentazione renale? [y/N] -> Se "y" avvia pipeline di segmentazione renale eseguendo run_all.sh (Vedi https://github.com/LetiziaC14/Kidney-segmentation/tree/main e aggiorna paths kidney_segmentation_folder)
+Pipeline di segmentazione renale? [y/N] -> Se "y" avvia pipeline di segmentazione renale eseguendo run_all.sh (Vedi https://github.com/LetiziaC14/Kidney-segmentation/tree/main e aggiorna path in config.KIDNEY_SEGMENTATION_PIPELINE_DIR)
 E' possibile lanciare i processi di segmentazione e di fix delle geometrie indipendentemente con:
 python execute_segmentator_pipeline.py
 python execute_blender_pipeline-py
@@ -87,6 +87,7 @@ https://www.blender.org/about/credits/
 
 Python:
 https://www.python.org/doc/copyright/
+
 
 
 
